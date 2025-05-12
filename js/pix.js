@@ -1,31 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all donation buttons
-  const donationButtons = document.querySelectorAll(".post-button2");
+  // Setup the custom donation button
+  const customDonationButton = document.getElementById(
+    "custom-donation-button"
+  );
+  const customDonationInput = document.getElementById("custom-donation-amount");
 
-  // Add click event listener to each button
-  donationButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
+  if (customDonationButton && customDonationInput) {
+    customDonationButton.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Get the parent anchor element
-      const parentAnchor = this.closest("a");
-      if (parentAnchor) {
-        // Prevent the default navigation
-        e.preventDefault();
+      // Get the amount from the input
+      const amountValue = parseFloat(customDonationInput.value);
 
-        // Extract the amount from the button text
-        const buttonText = this.textContent.trim();
-        const amountText = buttonText
-          .replace("R$ ", "")
-          .replace(".", "")
-          .replace(",", "");
-        const amount = parseInt(amountText, 10) * 100; // Convert to cents
-
-        // Call the function to generate PIX
-        generatePix(amount);
+      // Validate the amount (minimum R$5)
+      if (!amountValue || isNaN(amountValue) || amountValue < 5) {
+        showError("Por favor, digite um valor mínimo de R$ 5,00.");
+        return;
       }
+
+      // Convert to cents for the API
+      const amountInCents = Math.round(amountValue * 100);
+
+      // Call the function to generate PIX
+      generatePix(amountInCents);
     });
-  });
+  }
 
   // Function to generate PIX
   function generatePix(amount) {
@@ -123,38 +122,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Helper function to get UTM parameters from URL
   function getUtmParameters() {
     const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get("utm_source") || "";
+    const utmMedium = urlParams.get("utm_medium") || "";
+    const utmCampaign = urlParams.get("utm_campaign") || "";
+    const utmContent = urlParams.get("utm_content") || "";
 
-    // Get all UTM parameters and build the full string
-    const utmParams = {};
-
-    // Add all UTM parameters to the object
-    [
-      "utm_source",
-      "utm_campaign",
-      "utm_medium",
-      "utm_content",
-      "utm_term",
-      "utm_id",
-      "fbclid",
-      "xcod",
-      "sck",
-    ].forEach((param) => {
-      const value = urlParams.get(param);
-      if (value) {
-        utmParams[param] = value;
-      }
-    });
-
-    // Build the query string
-    if (Object.keys(utmParams).length === 0) {
-      return "direct";
-    }
-
-    return Object.entries(utmParams)
-      .map(
-        ([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`
-      )
-      .join("&");
+    return `${utmSource}|${utmMedium}|${utmCampaign}|${utmContent}`;
   }
 
   // Function to generate valid customer data

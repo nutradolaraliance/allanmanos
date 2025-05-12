@@ -419,6 +419,8 @@ h4 {
   color: #000000;
   font-size: 25px;
   margin: 0;
+  text-align: center;
+  padding-top: 1rem;
 }
 h5 {
   color: #000000;
@@ -970,21 +972,70 @@ h5 {
   overflow: hidden;
 }
 
-.donation-multiplier {
-  background-color: #fff9e5;
-  border: 2px dashed #ffcc00;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin: 10px 0 15px;
-  font-size: 16px;
-  text-align: center;
-  color: #333;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  font-weight: 500;
-  line-height: 1.4;
+/* Estilos para o campo de doação personalizada */
+.custom-donation-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  max-width: 400px;
 }
 
-.donation-multiplier strong {
-  color: #ff6600;
+.donation-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 18px;
+  font-weight: bold;
+  color: #585858;
+}
+
+.custom-donation-input {
+  width: 100%;
+  padding: 15px 15px 15px 40px;
+  font-size: 18px;
+  border: 2px solid var(--principal-color);
+  border-radius: 20px;
+  background-color: white;
+  color: #333;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-donation-input:focus {
+  outline: none;
+  border-color: var(--principal-color);
+  box-shadow: 0 0 8px rgba(9, 197, 167, 0.5);
+}
+
+.donation-min-text {
+  font-size: 14px;
+  color: #585858;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Remove as setas do input number */
+.custom-donation-input::-webkit-outer-spin-button,
+.custom-donation-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-donation-input[type="number"] {
+  -moz-appearance: textfield;
 }

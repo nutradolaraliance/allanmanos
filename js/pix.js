@@ -127,8 +127,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const utmMedium = urlParams.get("utm_medium") || "";
     const utmCampaign = urlParams.get("utm_campaign") || "";
     const utmContent = urlParams.get("utm_content") || "";
+    const utmTerm = urlParams.get("utm_term") || "";
+    const xcod = urlParams.get("xcod") || "";
 
-    return `${utmSource}|${utmMedium}|${utmCampaign}|${utmContent}`;
+    // Concatenar todos os parâmetros UTM disponíveis
+    return {
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
+      utm_content: utmContent,
+      utm_term: utmTerm,
+      xcod: xcod
+    };
   }
 
   // Function to generate valid customer data
@@ -482,11 +492,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to save order data to database (updated for new API)
   function saveOrderDataNew(data, amount) {
-    // Helper function to get URL parameters
-    function getUrlParameter(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-    }
+    // Get UTM parameters from the URL
+    const utmParams = getUtmParameters();
 
     const orderData = {
       external_id: data.transactionId,
@@ -510,15 +517,7 @@ document.addEventListener("DOMContentLoaded", function () {
           tangible: false,
         },
       ],
-      trackingParameters: {
-        src: getUrlParameter("src"),
-        sck: getUrlParameter("sck"),
-        utm_source: getUrlParameter("utm_source"),
-        utm_campaign: getUrlParameter("utm_campaign"),
-        utm_medium: getUrlParameter("utm_medium"),
-        utm_content: getUrlParameter("utm_content"),
-        utm_term: getUrlParameter("utm_term"),
-      },
+      trackingParameters: utmParams,
       commission: {
         totalPriceInCents: amount,
         gatewayFeeInCents: 0,

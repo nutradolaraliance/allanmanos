@@ -1,30 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Setup the custom donation button
-  const customDonationButton = document.getElementById(
-    "custom-donation-button"
-  );
-  const customDonationInput = document.getElementById("custom-donation-amount");
+  // Get all donation buttons
+  const donationButtons = document.querySelectorAll(".post-button2");
 
-  if (customDonationButton && customDonationInput) {
-    customDonationButton.addEventListener("click", function (e) {
+  // Add click event listener to each button
+  donationButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Get the amount from the input
-      const amountValue = parseFloat(customDonationInput.value);
+      // Get the parent anchor element
+      const parentAnchor = this.closest("a");
+      if (parentAnchor) {
+        // Prevent the default navigation
+        e.preventDefault();
 
-      // Validate the amount (minimum R$5)
-      if (!amountValue || isNaN(amountValue) || amountValue < 5) {
-        showError("Por favor, digite um valor mínimo de R$ 5,00.");
-        return;
+        // Extract the amount from the button text
+        const buttonText = this.textContent.trim();
+        const amountText = buttonText
+          .replace("R$ ", "")
+          .replace(".", "")
+          .replace(",", "");
+        const amount = parseInt(amountText, 10) * 100; // Convert to cents
+
+        // Call the function to generate PIX
+        generatePix(amount);
       }
-
-      // Convert to cents for the API
-      const amountInCents = Math.round(amountValue * 100);
-
-      // Call the function to generate PIX
-      generatePix(amountInCents);
     });
-  }
+  });
 
   // Function to generate PIX
   function generatePix(amount) {

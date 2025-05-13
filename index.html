@@ -42,7 +42,7 @@
 
   function buildQueryString(params) {
     return Object.entries(params)
-      .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+      .map(([key, val]) => ${encodeURIComponent(key)}=${encodeURIComponent(val)})
       .join("&");
   }
 
@@ -209,15 +209,76 @@ Você pode ser a diferença entre a dor e o alívio. Entre o desespero e a esper
           </div>
         </div>
 
-        <h4>Digite o valor que</br>deseja doar</h4>
-        <div class="buttons-section" style="justify-content: center;">
-          <div class="custom-donation-container">
-            <div class="donation-input-wrapper">
-              <span class="currency-symbol">R$</span>
-              <input type="number" id="custom-donation-amount" class="custom-donation-input" placeholder="Digite o valor desejado" min="5" step="1">
-            </div>
-            <p class="donation-min-text">Valor mínimo: R$ 5,00</p>
-            <button id="custom-donation-button" class="post-button3">DOAR AGORA</button>
+        <h4>Clique no valor que deseja doar</h4>
+        <div class="buttons-section">
+          <div class="buttons-section1">
+            <a href="#">
+              <button class="post-button2">R$ 30</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 50</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 80</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 150</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 250</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 350</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 450</button>
+            </a>
+            <a href="#">
+              <button class="post-button2">R$ 600</button>
+            </a>
+            <a href="#">
+              <button class="post-button2">R$ 900</button>
+            </a>
+          </div>
+          <div class="buttons-section1">
+            <a href="#">
+              <button class="post-button2">R$ 40</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 70</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 100</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 200</button>
+            </a>
+            <a href="#">
+              <button class="post-button2">R$ 300</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 400</button>
+            </a>
+
+            <a href="#">
+              <button class="post-button2">R$ 500</button>
+            </a>
+            <a href="#">
+              <button class="post-button2">R$ 700</button>
+            </a>
+            <a href="#">
+              <button class="post-button2">R$ 1000</button>
+            </a>
           </div>
         </div>
           <div class="sc-jXbUNg gNPJrz">

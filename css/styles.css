@@ -419,8 +419,6 @@ h4 {
   color: #000000;
   font-size: 25px;
   margin: 0;
-  text-align: center;
-  padding-top: 1rem;
 }
 h5 {
   color: #000000;
@@ -616,14 +614,16 @@ h5 {
 }
 
 .post-link {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #000000;
-  margin-bottom: 15px;
-  text-align: justify;
-  cursor: pointer; /* Altera o cursor para o formato de "mãozinha" ao passar sobre o link */
-  text-decoration: underline; /* Adiciona o sublinhado no texto */
-}
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 15px;
+    text-align: justify;
+    cursor: pointer; /* Altera o cursor para o formato de "mãozinha" ao passar sobre o link */
+    text-decoration: underline; /* Adiciona o sublinhado no texto */
+  }
+  
+  
 
 /* Estilizando a imagem do post */
 .post img {
@@ -670,7 +670,7 @@ h5 {
 }
 
 .seal-container {
-  margin: 50px 100px;
+    margin: 50px 100px;
 }
 
 .accordion {
@@ -817,23 +817,24 @@ h5 {
 }
 
 .likes-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 20px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
 .likes-container img {
-  width: 50px; /* Tamanho da mini imagem */
-  margin-right: 10px;
-}
+            width: 50px; /* Tamanho da mini imagem */
+            margin-right: 10px;
+        }
 .likes-container span {
-  font-size: 18px;
-  color: #585858;
-}
+            font-size: 18px;
+            color: #585858;
+        }
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
 
 /* Estilização do Popup */
 .modal {
@@ -878,7 +879,7 @@ h5 {
 .copy-btn {
   margin-top: 15px;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
@@ -924,7 +925,7 @@ h5 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border-left-color: #4caf50;
+  border-left-color: #4CAF50;
   /* Cor do Spinner */
   animation: spin 1s linear infinite;
   margin: 0 auto;
@@ -959,83 +960,15 @@ h5 {
   position: fixed;
   z-index: 2000;
   left: 50%;
-  top: 30px;
+  top: 30px
 }
 
 #snackbar.show {
   visibility: visible;
-  animation: fadeine 0.5s, fadeoute 0.5s 2.5s;
+  animation: fadeine .5s, fadeoute .5s 2.5s
 }
 
 /* Estilo para desativar o scroll no fundo */
 .no-scroll {
   overflow: hidden;
-}
-
-/* Estilos para o campo de doação personalizada */
-.custom-donation-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 15px auto;
-  max-width: 400px;
-}
-
-.donation-input-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-}
-
-.currency-symbol {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  font-weight: bold;
-  color: #585858;
-}
-
-.custom-donation-input {
-  width: 100%;
-  padding: 15px 15px 15px 40px;
-  font-size: 18px;
-  border: 2px solid var(--principal-color);
-  border-radius: 20px;
-  background-color: white;
-  color: #333;
-  text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.custom-donation-input:focus {
-  outline: none;
-  border-color: var(--principal-color);
-  box-shadow: 0 0 8px rgba(9, 197, 167, 0.5);
-}
-
-.donation-min-text {
-  font-size: 14px;
-  color: #585858;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-/* Remove as setas do input number */
-.custom-donation-input::-webkit-outer-spin-button,
-.custom-donation-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.custom-donation-input[type="number"] {
-  -moz-appearance: textfield;
 }
